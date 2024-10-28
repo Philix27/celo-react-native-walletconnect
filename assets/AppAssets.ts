@@ -1,0 +1,45 @@
+export const AppAssets = {
+  font: {
+    montSerrat: "assets/fonts/MontserratAlternates-Regular.ttf",
+    spaceMono: "assets/fonts/SpaceMono-Regular.ttf",
+  },
+  cluster: {
+    welldone: require("@/assets/images/cluster/welldone.png"),
+    paymentSuccess: require("@/assets/images/cluster/success.png"),
+  },
+  imgs: {
+    authLogo: require("@/assets/images/core/authLogo.png"),
+    bell: require("@/assets/images/core/bell.png"),
+    bellLogo: require("@/assets/images/core/bellLogo.png"),
+    splash: require("@/assets/images/core/splash.png"),
+    vector: require("@/assets/images/core/vector.png"),
+    homeBg: require("@/assets/images/core/home-bg.png"),
+  },
+  svg: {
+    arrowLeftLine: "assets/images/arrow-left-line.svg",
+    logo: "assets/images/logo.svg",
+    newBell: "assets/images/newBell.svg",
+  },
+  dashboard: {
+    adaptiveIcon: require("@/assets/images/dashboard/adaptive-icon.png"),
+    addBankAccount: require("@/assets/images/dashboard/addBankAccount.png"),
+    recentBallot: require("@/assets/images/dashboard/recentBallot.png"),
+    recentActivity: require("@/assets/images/dashboard/recentActivity.png"),
+    recentActivityEmpty: require("@/assets/images/dashboard/recentActivityEmpty.png"),
+    recentContribute: require("@/assets/images/dashboard/recentContribute.png"),
+    topBanner: require("@/assets/images/dashboard/topBanner.png"),
+    weeklyContribution: require("@/assets/images/dashboard/weeklyContribution.png"),
+    withdrawal: require("@/assets/images/dashboard/withdrawal.png"),
+    contribution: require("@/assets/images/dashboard/contribution.png"),
+    contributionBalloting: require("@/assets/images/dashboard/contributionBalloting.png"),
+    monthlyContribution: require("@/assets/images/dashboard/monthlyContribution.png"),
+    blueWallet: require("@/assets/images/dashboard/blueWallet.png"),
+    blueBank: require("@/assets/images/dashboard/blueBank.png"),
+    blueDown: require("@/assets/images/dashboard/blueDown.png"),
+  },
+  core: {
+    success: require("@/assets/images/core/successLogo.gif"),
+    loading: require("@/assets/images/core/loading.gif"),
+    error: require("@/assets/images/core/failedLogo.gif"),
+  },
+};
