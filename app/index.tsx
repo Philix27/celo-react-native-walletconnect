@@ -54,14 +54,14 @@ export default function index() {
         <Text style={styles.logoText}>Paymois Logo0l</Text>
       </View>
 
-      {/* <WalletConnectModal
+      <WalletConnectModal
         projectId={projectId}
         providerMetadata={providerMetadata}
-      /> */}
-      {/* <Button
+      />
+      <Button
         title="Login"
         onPress={() => {
-          router.push("/indexx");
+          router.push("/home");
         }}
       />
       <Button
@@ -69,7 +69,7 @@ export default function index() {
         onPress={() => {
           router.push(AppPages.dashboard.index);
         }}
-      /> */}
+      />
 
       {/* <Button
         title="Payment Successful"
