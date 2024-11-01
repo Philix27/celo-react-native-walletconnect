@@ -20,11 +20,11 @@ export const AppAssets = {
     logo: "assets/images/logo.svg",
     newBell: "assets/images/newBell.svg",
   },
-  dashboard: {
-    blueWallet: require("@/assets/images/dashboard/blueWallet.png"),
-    blueBank: require("@/assets/images/dashboard/blueBank.png"),
-    blueDown: require("@/assets/images/dashboard/blueDown.png"),
-  },
+  // dashboard: {
+  //   blueWallet: require("@/assets/images/dashboard/blueWallet.png"),
+  //   blueBank: require("@/assets/images/dashboard/blueBank.png"),
+  //   blueDown: require("@/assets/images/dashboard/blueDown.png"),
+  // },
   core: {
     success: require("@/assets/images/core/successLogo.gif"),
     loading: require("@/assets/images/core/loading.gif"),

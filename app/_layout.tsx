@@ -1,3 +1,4 @@
+import "@walletconnect/react-native-compat";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
@@ -14,6 +15,8 @@ import { useColorScheme } from "@/components";
 import { AppUtils } from "@/utils";
 
 import { useWalletConnectModal } from "@walletconnect/modal-react-native";
+import { Core } from "@walletconnect/core";
+import { WalletKit } from "@reown/walletkit";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -23,18 +26,22 @@ export {
 import "@walletconnect/react-native-compat";
 import { WalletConnectModal } from "@walletconnect/modal-react-native";
 
-const projectId = "YOUR_PROJECT_ID";
+// const projectId = "YOUR_PROJECT_ID";
 
-const providerMetadata = {
-  name: "YOUR_PROJECT_NAME",
-  description: "YOUR_PROJECT_DESCRIPTION",
-  url: "https://your-project-website.com/",
-  icons: ["https://your-project-logo.com/"],
-  redirect: {
-    native: "YOUR_APP_SCHEME://",
-    universal: "YOUR_APP_UNIVERSAL_LINK.com",
-  },
-};
+// const providerMetadata = {
+//   name: "YOUR_PROJECT_NAME",
+//   description: "YOUR_PROJECT_DESCRIPTION",
+//   url: "https://your-project-website.com/",
+//   icons: ["https://your-project-logo.com/"],
+//   redirect: {
+//     native: "YOUR_APP_SCHEME://",
+//     universal: "YOUR_APP_UNIVERSAL_LINK.com",
+//   },
+// };
+
+const core = new Core({
+  projectId: process.env.PROJECT_ID,
+});
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -50,6 +57,20 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
+  const initialize = async () => {
+    const walletKit = await WalletKit.init({
+      core, // <- pass the shared `core` instance
+      metadata: {
+        name: "Demo React Native Wallet",
+        description: "Demo RN Wallet to interface with Dapps",
+        url: "www.walletconnect.com",
+        icons: ["https://your_wallet_icon.png"],
+        redirect: {
+          native: "yourwalletscheme://",
+        },
+      },
+    });
+  };
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
@@ -79,10 +100,10 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <WalletConnectModal
+      {/* <WalletConnectModal
         projectId={projectId}
         providerMetadata={providerMetadata}
-      />
+      /> */}
       <Stack>
         <Stack.Screen
           name="index"
