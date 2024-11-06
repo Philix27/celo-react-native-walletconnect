@@ -5,8 +5,9 @@ import {
   Image,
   StatusBar,
   SafeAreaView,
+  View,
 } from "react-native";
-import { AppButton, TextComponent, View } from "@/components";
+import { AppButton, } from "@/components";
 import { AppAssets, AppUtils } from "@/utils";
 
 type IProps = {
@@ -45,11 +46,11 @@ export function AuthWrapper(props: IProps) {
             />
           )}
         </View>
-        <TextComponent
+        {/* <TextComponent
           style={{ marginBottom: 20 }}
           header={props.title}
           body={props.desc}
-        />
+        /> */}
         <View>
           {props.children}
           <View style={props.inputNote && { marginTop: 50 }}>

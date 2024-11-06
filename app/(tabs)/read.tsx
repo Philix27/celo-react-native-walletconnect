@@ -1,43 +1,32 @@
-import {
-  StyleSheet,
-  Image,
-  ActivityIndicator,
-  SafeAreaView,
-  StatusBar,
-  Text,
-  View,
-} from "react-native";
+import { StyleSheet, Image, ActivityIndicator } from "react-native";
 
-import { ParallaxScrollView } from "@/components";
+import { ParallaxScrollView, Text, View } from "@/components";
 import { useContractEvents, useReadContract } from "thirdweb/react";
 import { client, contract, usdcContract } from "@/constants/thirdweb";
 import { totalSupply } from "thirdweb/extensions/erc721";
 import { transferEvent } from "thirdweb/extensions/erc20";
 import { toTokens } from "thirdweb";
 import { shortenAddress } from "thirdweb/utils";
-import { AppUtils, AppStyles } from "@/utils";
 // import { SocialProfilesList } from "../../components/SocialProfileCard";
 
 export default function ReadScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ParallaxScrollView
-        headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-        headerImage={
-          <Image
-            source={require("@/assets/images/title.png")}
-            style={styles.reactLogo}
-          />
-        }
-      >
-        <View style={styles.titleContainer}>
-          <Text style={AppStyles.title}>Read onchain data</Text>
-        </View>
-        <SocialSection />
-        <ReadSection />
-        <EventsSection />
-      </ParallaxScrollView>
-    </SafeAreaView>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+      headerImage={
+        <Image
+          source={require("@/assets/images/title.png")}
+          style={styles.reactLogo}
+        />
+      }
+    >
+      <View style={styles.titleContainer}>
+        <Text>Read onchain data</Text>
+      </View>
+      <SocialSection />
+      <ReadSection />
+      <EventsSection />
+    </ParallaxScrollView>
   );
 }
 
@@ -119,11 +108,6 @@ function EventsSection() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: AppUtils.color.bg,
-    paddingTop: StatusBar.currentHeight,
-  },
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",

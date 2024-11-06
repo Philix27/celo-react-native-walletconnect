@@ -16,7 +16,8 @@ export default function AuthLayout() {
     </Stack>
   );
 }
-
+ activeChain = "ethereum";
+ clientId = "your-client-id";
 const pages: { title: string; name: string }[] = [
   {
     title: "Create New Reset Password Screen",
