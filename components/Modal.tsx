@@ -1,7 +1,8 @@
-import { AppButton, View, Text } from "@/components";
 import { AppStyles, AppUtils } from "@/utils";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Modal, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text } from "./Themed";
+import { AppButton } from "./AppButton";
 
 type IProps = {
   title?: string;
@@ -38,7 +39,10 @@ export function AppModal(props: IProps) {
           </View>
           <AppButton title={props.btnTitle} onPress={props.onPress} />
           {props.secondBtnTitle && (
-            <AppButton title={props.secondBtnTitle} onPress={props.secondOnPress} />
+            <AppButton
+              title={props.secondBtnTitle}
+              onPress={props.secondOnPress}
+            />
           )}
         </View>
       </SafeAreaView>

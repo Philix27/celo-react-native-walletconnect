@@ -1,7 +1,6 @@
-import { Text, View } from "@/components";
-import { AppUtils } from "@/utils";
-import React from "react";
 import { TouchableOpacity, StyleSheet, ViewStyle, Image } from "react-native";
+import { Text, View } from "./Themed";
+import { AppUtils } from "@/utils";
 
 export function AppIconButton(props: {
   title: string;

@@ -98,7 +98,7 @@ function EventsSection() {
       </View>
       <View style={{ height: 4 }} />
       <Text>
-        Live <Text>USDC</Text> transfers
+        Live <Text>cUSD</Text> transfers
       </Text>
       {eventsQuery.isLoading && <ActivityIndicator />}
       {eventsQuery.data
@@ -109,7 +109,7 @@ function EventsSection() {
             <View key={`${event.transactionHash}${i}`} style={{ gap: 4 }}>
               <Text>
                 {shortenAddress(event.args.from)} sent{" "}
-                <Text>{toTokens(event.args.value, 6)} USDC</Text>{" "}
+                <Text>{toTokens(event.args.value, 6)} cUSD</Text>{" "}
               </Text>
             </View>
           );

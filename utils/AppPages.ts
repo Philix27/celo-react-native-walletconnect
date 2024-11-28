@@ -1,36 +1,5 @@
 export const AppPages = {
   auth: {
     login: "/login",
-    resetPassword: "/reset-password/",
-    resetPasswordNewPassword: "/reset-password/create-new",
-    resetPasswordOtp: "/reset-password/otp",
-    resetPasswordSuccess: "/reset-password/success",
-    signup: "/signup/",
-    signupBvn: "/signup/bvn/",
-    signupBvnSuccess: "/signup/bvn-success/",
-    signupOtp: "/signup/otp/",
-    signupPassword: "/signup/password/",
-  },
-  dashboard: {
-    index: "/dashboard/",
-    paymentDetails: "/dashboard/payment-details",
-    otp: "/dashboard/otp",
-    bankTransfer: "/dashboard/bank-transfer",
-    paymentSuccess: "/dashboard/payment-success",
-    about: "/dashboard/about",
-  },
-  joinCluster: {
-    job: "/join-cluster/job",
-    contribute: "/join-cluster/contribute",
-    cardDetails: "/join-cluster/card-details",
-    otp: "/join-cluster/otp",
-    bankTransfer: "/join-cluster/bank-transfer",
-    paymentSuccess: "/join-cluster/payment-success",
-    aboutBallot: "/join-cluster/ballot-about",
-    pickBallot: "/join-cluster/ballot-pick",
-  },
-  accountSetup: {
-    index: "/account-setup/",
-    proofIdentity: "/account-setup/identity-proof",
   },
 };

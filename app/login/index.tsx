@@ -62,8 +62,8 @@ const thirdwebAuth = createAuth({
 // fake login state, this should be returned from the backend
 let isLoggedIn = false;
 
-export default function HomeScreen() {
-  const account = useActiveAccount();
+export default function LoginScreen() {
+  //   const account = useActiveAccount();
   const theme = useColorScheme();
   return (
     <SafeAreaView
@@ -105,6 +105,37 @@ export default function HomeScreen() {
           <Text>Styled the Connect Button to match your app.</Text>
         </View>
 
+        <ConnectButton
+          client={client}
+          theme={lightTheme({
+            colors: {
+              primaryButtonBg: "#1e8449",
+              modalBg: "#1e8449",
+              borderColor: "#196f3d",
+              accentButtonBg: "#196f3d",
+              primaryText: "#ffffff",
+              secondaryIconColor: "#a7b8b9",
+              secondaryText: "#a7b8b9",
+              secondaryButtonBg: "#196f3d",
+            },
+          })}
+          wallets={[
+            createWallet("io.metamask"),
+            createWallet("com.coinbase.wallet"),
+            createWallet("me.rainbow"),
+            createWallet("com.trustwallet.app"),
+            createWallet("io.zerion.wallet"),
+            createWallet("xyz.argent"),
+            createWallet("com.okex.wallet"),
+            createWallet("com.zengo"),
+          ]}
+          connectButton={{
+            label: "Sign in to ✨ MyApp",
+          }}
+          connectModal={{
+            title: "✨ MyApp Login",
+          }}
+        />
         <View style={{ height: 16 }} />
         <View style={{ gap: 2 }}>
           <Text>{`<ConnectEmbed />`}</Text>
@@ -113,6 +144,7 @@ export default function HomeScreen() {
             configured with a specific list of EOAs + SIWE.
           </Text>
         </View>
+        
 
         <View style={{ height: 16 }} />
         <View style={{ gap: 2 }}>
@@ -126,6 +158,106 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
+
+const CustomConnectUI = () => {
+  const wallet = useActiveWallet();
+  const account = useActiveAccount();
+  const [email, setEmail] = useState<string | undefined>();
+  const { disconnect } = useDisconnect();
+  useEffect(() => {
+    if (wallet && wallet.id === "inApp") {
+      getUserEmail({ client }).then(setEmail);
+    }
+  }, [wallet]);
+
+  return wallet && account ? (
+    <View>
+      <Text>Connected as {shortenAddress(account.address)}</Text>
+      {email && <Text>{email}</Text>}
+      <View style={{ height: 16 }} />
+      <ThemedButton onPress={() => disconnect(wallet)} title="Disconnect" />
+    </View>
+  ) : (
+    <>
+      <ConnectWithGoogle />
+      <ConnectWithMetaMask />
+      <ConnectWithPasskey />
+    </>
+  );
+};
+
+const ConnectWithGoogle = () => {
+  const { connect, isConnecting } = useConnect();
+  return (
+    <ThemedButton
+      title="Connect with Google"
+      loading={isConnecting}
+      loadingTitle="Connecting..."
+      onPress={() => {
+        connect(async () => {
+          const w = inAppWallet({
+            smartAccount: {
+              chain,
+              sponsorGas: true,
+            },
+          });
+          await w.connect({
+            client,
+            strategy: "google",
+          });
+          return w;
+        });
+      }}
+    />
+  );
+};
+
+const ConnectWithMetaMask = () => {
+  const { connect, isConnecting } = useConnect();
+  return (
+    <ThemedButton
+      title="Connect with MetaMask"
+      variant="secondary"
+      loading={isConnecting}
+      loadingTitle="Connecting..."
+      onPress={() => {
+        connect(async () => {
+          const w = createWallet("io.metamask");
+          await w.connect({
+            client,
+          });
+          return w;
+        });
+      }}
+    />
+  );
+};
+
+const ConnectWithPasskey = () => {
+  const { connect } = useConnect();
+  return (
+    <ThemedButton
+      title="Login with Passkey"
+      onPress={() => {
+        connect(async () => {
+          const hasPasskey = await hasStoredPasskey(client);
+          const w = inAppWallet({
+            auth: {
+              options: ["passkey"],
+              passkeyDomain: "thirdweb.com",
+            },
+          });
+          await w.connect({
+            client,
+            strategy: "passkey",
+            type: hasPasskey ? "sign-in" : "sign-up",
+          });
+          return w;
+        });
+      }}
+    />
+  );
+};
 
 const styles = StyleSheet.create({
   titleContainer: {

@@ -1,7 +1,13 @@
 import { AppUtils } from "@/utils";
-import React, { ReactNode } from "react";
-import { SafeAreaView, StyleSheet, StatusBar, ViewStyle, ScrollView } from "react-native";
-import { View } from "../Themed";
+import { ReactNode } from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  ViewStyle,
+  ScrollView,
+} from "react-native";
+import { View } from "./Themed";
 
 type IProps = {
   children: ReactNode;
@@ -16,7 +22,10 @@ export function AppWrapper(props: IProps) {
   return (
     <SafeAreaView style={{ ...styles.container, ...props.style }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <StatusBar backgroundColor={AppUtils.color.primary} barStyle={"default"} />
+        <StatusBar
+          backgroundColor={AppUtils.color.primary}
+          barStyle={"default"}
+        />
         <View style={containerStyles}>{props.children}</View>
       </ScrollView>
     </SafeAreaView>

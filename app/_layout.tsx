@@ -1,4 +1,3 @@
-import "@walletconnect/react-native-compat";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
@@ -23,7 +22,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
+  initialRouteName: "/home",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -57,26 +56,29 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThirdwebProvider >
+    <ThirdwebProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
-          <Stack.Screen
-            name="index"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="(auth)"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-          <Stack.Screen name="indexx" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+          {/* {pages.map((val, i) => (
+            <Stack.Screen
+              key={i}
+              name={val.name}
+              options={{
+                title: val.title,
+                headerShown: false,
+              }}
+            />
+          ))} */}
         </Stack>
       </ThemeProvider>
     </ThirdwebProvider>
   );
 }
+
+const pages: { title: string; name: string }[] = [
+  { title: "Home", name: "/dex" },
+  { title: "Login", name: "login/index" },
+  { title: "Welcome", name: "welcome/index" },
+  { title: "Read", name: "read/index" },
+];

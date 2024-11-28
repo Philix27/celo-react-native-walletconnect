@@ -1,5 +1,5 @@
 import { TextInput, ViewStyle, StyleSheet } from "react-native";
-import { View, Text } from "../Themed";
+import { View, Text } from "./Themed";
 import { AppStyles, AppUtils } from "@/utils";
 import { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";

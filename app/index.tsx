@@ -8,10 +8,10 @@ import {
   Button,
   Pressable,
 } from "react-native";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import { AppAssets, AppPages, AppUtils } from "@/utils";
 
-export default function index() {
+export default function Index() {
   // Function to handle the
   const handleButtonPress = async () => {};
 
@@ -20,20 +20,35 @@ export default function index() {
       <Text style={styles.heading}>WalletConnect Modal RN Tutorial</Text>
 
       <View style={styles.logoContainer}>
-        <Image src={AppAssets.svg.logo} alt="Logo Image" />
-        <Text style={styles.logoText}>Paymois Logo0l</Text>
+        <Image src={AppAssets.imgs.logo} alt="Logo Image" />
+        <Text style={styles.logoText}>Celo Native </Text>
       </View>
 
+      <Link href={"/well"}>
+        <Text>Well</Text>
+      </Link>
       <Button
-        title="Login"
+        title="Read"
+        onPress={() => {
+          router.push("/read");
+        }}
+      />
+      <Button
+        title="Home"
         onPress={() => {
           router.push("/home");
         }}
       />
       <Button
-        title="Dashboard"
+        title="Login"
         onPress={() => {
-           router.push("dashboard");
+          router.push("/login");
+        }}
+      />
+      <Button
+        title="Welcome"
+        onPress={() => {
+          router.push("/welcome");
         }}
       />
     </SafeAreaView>

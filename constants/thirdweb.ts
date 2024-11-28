@@ -1,5 +1,5 @@
 import { createThirdwebClient, getContract } from "thirdweb";
-import { base, baseSepolia } from "thirdweb/chains";
+import { base, baseSepolia, celoAlfajoresTestnet } from "thirdweb/chains";
 import { setThirdwebDomains } from "thirdweb/utils";
 
 const clientId = process.env.EXPO_PUBLIC_THIRDWEB_CLIENT_ID!;
@@ -23,7 +23,7 @@ export const contract = getContract({
 });
 
 export const usdcContract = getContract({
-  address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-  chain: base,
+  address: "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1",
+  chain: celoAlfajoresTestnet,
   client,
 });

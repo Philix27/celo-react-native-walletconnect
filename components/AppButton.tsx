@@ -1,12 +1,11 @@
-import { Text } from "@/components";
-import { AppUtils } from "@/utils";
-import React from "react";
 import {
   TouchableOpacity,
   StyleSheet,
   ViewStyle,
   TouchableWithoutFeedbackProps,
 } from "react-native";
+import { Text } from "./Themed";
+import { AppUtils } from "@/utils";
 
 interface IProps extends TouchableWithoutFeedbackProps {
   title: string;
