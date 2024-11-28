@@ -51,7 +51,7 @@
     "react-native-svg": "^15.8.0",
     "react-native-toast-message": "^2.2.0",
     "react-native-web": "~0.19.11",
-    "thirdweb": "^5.66.0",
+    "thirdweb": "^5.71.0",
     "viem": "^2.21.36"
   },
   "devDependencies": {
